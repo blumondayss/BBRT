@@ -1,15 +1,3 @@
-/**
- * 放大镜插件     v1.1.0
- * @mail cj_zheng1023@hotmail.com
- * @author AfterWin
- *
- *
- *
- * update log
- *
- * 2017.5.30    修改通过请求获取的图片获取不到高宽的问题   v.1.1.0
- *
- */
 (function($){
 
     var SPACING = 15;
@@ -28,13 +16,7 @@
         })
     }
 
-    /**
-     * 初始化聚焦框
-     * @param target     图片jquery对象
-     * @param sWidth     聚焦区域宽度
-     * @param sHeight    聚焦区域长度
-     * @private
-     */
+
     var _initZoom = function(target, sWidth, sHeight){
         var $zoom = $("<div />").addClass("zoom-selector").width(sWidth).height(sHeight);
         target.after($zoom);
@@ -79,20 +61,13 @@
             }
         })
     }
-    /**
-     *初始化放大区域
-     * @param target       图片jquery对象
-     * @param imgUrl      原始图片URL
-     * @param vWidth      放大区域宽度
-     * @param vHeight     放大区域长度
-     * @private
-     */
+
     var _initViewer = function(target, imgUrl, vWidth, vHeight){
         var $viewer = $("<div />").addClass("viewer-box").width(vWidth).height(vHeight);
         var $zoomBox = target.closest(".zoom-box");
         $viewer.css({
             left: target.width() + SPACING,
-            top: 0
+            top: 10
         })
         _setOriginalSize(target, function(oWidth, oHeight){
             var $img = $("<img src='"+imgUrl+"' />").width(oWidth).height(oHeight);
@@ -100,13 +75,8 @@
             target.after($viewer);
         });
     }
-    /**
-     * 设置图片原始宽高
-     * @param target       图片jquery对象
-     * @param callback     通过回调函数设置原始宽高
-     * @returns {{oWidth: Number, oHeight: Number}}
-     * @private
-     */
+
+
     var _setOriginalSize = function(target, callback){
         var newImg = new Image();
         newImg.src = target.attr("src")+"?date="+new Date();
