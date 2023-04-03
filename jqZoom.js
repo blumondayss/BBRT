@@ -1,10 +1,6 @@
 (function($){
 
     var SPACING = 15;
-    //var ZOOM_TIMES = 10;
-
-
-
 
 
     $.fn.jqZoom = function(options){
@@ -66,8 +62,8 @@
         var $viewer = $("<div />").addClass("viewer-box").width(vWidth).height(vHeight);
         var $zoomBox = target.closest(".zoom-box");
         $viewer.css({
-            left: target.width() + SPACING,
-            top: 10
+            left: -(target.width() + SPACING),
+            top: 0
         })
         _setOriginalSize(target, function(oWidth, oHeight){
             var $img = $("<img src='"+imgUrl+"' />").width(oWidth).height(oHeight);
